@@ -34,6 +34,6 @@ function playRound(player, computer){
     }
 }
 
-let player = (prompt("Choose Rock, Paper, or Scissors")).toLowerCase()
+const player = (prompt("Choose Rock, Paper, or Scissors")).toLowerCase()
 const computer = getComputerChoice()
 console.log(playRound(player, computer))
