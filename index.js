@@ -15,7 +15,6 @@ function getComputerChoice() {
 function playRound(player, computer) {
   console.log(`Computer plays ${computer}`);
   console.log(`Player plays ${player}`);
-  for (i = 0; i <= 5; i++) {
     if (player === "rock" && computer === "scissors") {
       playerScore++;
       return `Player Win! Rock beats Scissors`;
@@ -39,7 +38,6 @@ function playRound(player, computer) {
     } else {
       return `Invalid input, try again`;
     }
-  }
 }
 
 function playGame() {
