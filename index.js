@@ -109,10 +109,10 @@ const playGame = (player, computer) => {
     return `Player wins! Rock beats scissors`
   }else if (player === "paper" && computer === "rock"){
     playerScore++
-    return `Player wins! paper beats rock!`
+    return `Player wins! Paper beats rock!`
   } else if (player === "scissors" && computer === "paper"){
     playerScore++
-    return `Player Wins! Scissors beat Paper!`
+    return `Player Wins! Scissors beat paper!`
   }else if(player === "scissors" && computer === "rock"){ 
     computerScore++
     return `Computer wins! Rock beats scissors!`
@@ -121,7 +121,7 @@ const playGame = (player, computer) => {
     return `Computer wins! Paper beats rock!`
   } else if (player === "paper" && computer === "scissors"){
     computerScore++
-    return `Computer Winns! Scissors Beat Paper!`
+    return `Computer Winns! Scissors beats paper!`
   } else if (player === computer){
     return `It's a draw!`
   } else{
