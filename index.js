@@ -81,7 +81,7 @@ const getComputerChoice = () => {
 }
 
 
-const playRound = (player, computer) => {
+const playGame = (player, computer) => {
   console.log(`Computer plays ${computer}`)
   if(player === 'r'){
     player = "rock"
@@ -92,34 +92,49 @@ const playRound = (player, computer) => {
   } else if(player === 's'){
     player = "scissors"
     console.log(`Player plays scissors`)
+  } else{
+    console.log(`Player plays ${player}, invalid input!`)
   }
 
 
-  if((player === "rock" || player === "r") && computer === "scissors"){
-    //
+  if(player === "rock" && computer === "scissors"){
+    playerScore++
     return `Player wins! Rock beats scissors`
-  }else if ((player === "paper") && computer === "rock"){
-    //
+  }else if (player === "paper" && computer === "rock"){
+    playerScore++
     return `Player wins! paper beats rock!`
-  } else if ((player === "scissors") && computer === "paper"){
-    //
+  } else if (player === "scissors" && computer === "paper"){
+    playerScore++
     return `Player Wins! Scissors beat Paper!`
-  }else if((player === "scissors") && computer === "rock"){ 
-    //
+  }else if(player === "scissors" && computer === "rock"){ 
+    computerScore++
     return `Computer wins! Rock beats scissors!`
-  }else if ((player === 'rock') && computer === "paper"){
-    //
+  }else if (player === 'rock' && computer === "paper"){
+    computerScore++
     return `Computer wins! Paper beats rock!`
-  } else if ((player === "paper") && computer === "scissors"){
-    //
+  } else if (player === "paper" && computer === "scissors"){
+    computerScore++
     return `Computer Winns! Scissors Beat Paper!`
-  } else if ((player === computer)){
+  } else if (player === computer){
     return `It's a draw!`
   } else{
-    return `Invalid input!`
+    return `Try again!`
   }
 }
 
-let player = (prompt(`Rock = r \n Paper = p \n scissors = s`)).toLowerCase() 
-let computer = getComputerChoice()
-console.log(playRound(player, computer))
+
+const playRound = () => {
+  while (playerScore < 5 && computerScore < 5){
+    const player = (prompt(`Rock = r \n Paper = p \n scissors = s`)).toLowerCase()
+    const computer = getComputerChoice() 
+    console.log(playGame(player, computer))
+    console.log(`Player : ${playerScore} - Computer : ${computerScore}\n\n\n\n`)
+  }
+  if(playerScore > computerScore){
+    console.log("Player Wins!!!!!!")
+  } else{
+    console.log ("Computer Wins!!!!!!")
+  }
+}
+
+playRound()
