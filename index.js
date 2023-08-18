@@ -65,10 +65,12 @@
 
 
 
-
+// Global variable for later
 let playerScore = 0
 let computerScore = 0
 
+
+// Random generated choices from computer
 const getComputerChoice = () => {
   let choice = Math.random()
    if(choice <= 0.33){
@@ -80,9 +82,13 @@ const getComputerChoice = () => {
    }
 }
 
-
+// The game
 const playGame = (player, computer) => {
+
+  // Showing what computer picked from getComputerChoice
   console.log(`Computer plays ${computer}`)
+
+  // Show what the player picked, but converted the individual letters to word
   if(player === 'r'){
     player = "rock"
     console.log(`Player plays rock`)
@@ -97,6 +103,7 @@ const playGame = (player, computer) => {
   }
 
 
+  // The if-else to determine who wins the round and add scores 
   if(player === "rock" && computer === "scissors"){
     playerScore++
     return `Player wins! Rock beats scissors`
@@ -123,13 +130,24 @@ const playGame = (player, computer) => {
 }
 
 
+// The rounds played
 const playRound = () => {
   while (playerScore < 5 && computerScore < 5){
+
+    //The prompt for player to enter
     const player = (prompt(`Rock = r \n Paper = p \n scissors = s`)).toLowerCase()
+
+    // passed in the function
     const computer = getComputerChoice() 
+
+    // Passed both player and computer as argument and called the function
     console.log(playGame(player, computer))
+
+    // The scoreboard
     console.log(`Player : ${playerScore} - Computer : ${computerScore}\n\n\n\n`)
   }
+
+  // Final statement on who won
   if(playerScore > computerScore){
     console.log("Player Wins!!!!!!")
   } else{
@@ -137,4 +155,5 @@ const playRound = () => {
   }
 }
 
+// Call the function
 playRound()
