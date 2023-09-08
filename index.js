@@ -131,6 +131,7 @@ const playGame = (player, computer) => {
 
 
 
+
 // The rounds played
 const playRound = () => {
   while (playerScore < 5 && computerScore < 5){
