@@ -1,0 +1,20 @@
+.main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 200px;
+}
+
+.mainScore{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.playerDiv,
+.computerDiv{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
