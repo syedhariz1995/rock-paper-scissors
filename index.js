@@ -166,11 +166,11 @@
 // Use DOM
 
 // Scores 
-let playerScore = 0
+let playScore = 0
 let computerScore = 0
 
-// Globa; variables
-const playScore = document.getElementById('playerScore')
+// Global variables
+const playerScore = document.getElementById('playerScore')
 const comScore = document.getElementById('computerScore')
 const announce = document.getElementById('announce')
 
@@ -180,108 +180,3 @@ const scissors = document.getElementById('scissors')
 const playerChoice = document.getElementById('playerChoice');
 
 
-// Player choice
-const getPlayerChoice = (choice) => {
-  playerChoice.innerHTML = choice;
-}
-
-rock.addEventListener('click', () => {
-  getPlayerChoice(rock.id)
-});
-
-paper.addEventListener('click', () => {
-  getPlayerChoice(paper.id)
-});
-
-scissors.addEventListener('click', () => {
-  getPlayerChoice(scissors.id)
-});
-
-
-
-
-// Random generated choices from computer
-const getComputerChoice = () => {
-  const computerChoice = document.getElementById('computerChoice')
-  let choice = Math.random()
-  if(choice <= 0.33){
-    return 'rock'
-  } else if (choice >= 0.34 && choice <= 0.66){
-    return 'paper'
-  } else{
-    return 'scissors'
-  }
-}
-
-
-
-// The game
-const playGame = (player, computer) => {
-
-  // Show what the player picked, but converted the individual letters to word
-  if(player === rock.id){
-    playerChoice.innerText = 'rock' 
-  } else if(player == paper.id){
-    playerChoice.innerText = 'paper' 
-  } else if(player === scissors.id){
-    playerChoice.innerText = 'scissors'
-  } else{
-    playerChoice.innerText = `Invalid input. Try again!`
-  }
-
-
-  // The if-else to determine who wins the round and add scores 
-  if(player === rock.id && computer === "scissors"){
-    playerScore++
-    announce.innerText =  `Player wins! Rock beats scissors`
-  }else if (player === paper.id && computer === "rock"){
-    playerScore++
-    announce.innerText = `Player wins! Paper beats rock!`
-  } else if (player === scissors.id && computer === "paper"){
-    playerScore++
-    announce.innerText = `Player Wins! Scissors beat paper!`
-  }else if(player === scissors.id && computer === "rock"){ 
-    computerScore++
-    announce.innerText = `Computer wins! Rock beats scissors!`
-  }else if (player === rock.id && computer === "paper"){
-    computerScore++
-    announce.innerText = `Computer wins! Paper beats rock!`
-  } else if (player === paper.id && computer === "scissors"){
-    computerScore++
-    announce.innerText = `Computer Wins! Scissors beats paper!`
-  } else if (player === computer){
-    announce.innerText = `It's a draw!`
-  } else{
-    announce.innerText = `Try again!`
-  }
-}
-
-
-
-// The rounds played
-const playRound = () => {
-  while (playerScore < 5 && computerScore < 5){
-
-    //The prompt for player to enter
-    const player = getPlayerChoice()
-
-    // passed in the function
-    const computer = getComputerChoice() 
-
-    // Passed both player and computer as argument and called the functionp
-    playGame(player, computer)
-
-    // The scoreboard
-    playScore.innerHTML = playerScore
-    comScore.innerHTML = computerScore
-  }
-
-  // Final statement on who won
-  if(playerScore > computerScore){
-    announce.innerHTML = `Player Wins!!!!!!!!`
-  } else{
-    announce.innerHTML = `Computer Wins!!!!!!!!`
-  }
-}
-
-// Call 

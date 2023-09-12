@@ -18,3 +18,7 @@
     justify-content: center;
     flex-direction: column;
 }
+
+.comBtn{
+    cursor: not-allowed;
+}
