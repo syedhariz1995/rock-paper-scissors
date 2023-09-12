@@ -187,51 +187,51 @@ const disableButtons = (disable) => {
 // Random generated choices from computer
 const getComputerChoice = () => {
   let choice = Math.random()
-   if(choice <= 0.33){
+  if (choice <= 0.33) {
     return rock.id
-   } else if (choice >= 0.34 && choice <= 0.66){
+  } else if (choice >= 0.34 && choice <= 0.66) {
     return paper.id
-   } else{
+  } else {
     return scissors.id
-   }
+  }
 }
 
-// computerChoice.innerText = getComputerChoice()
+// Initial Scores and announcement
+computerChoice.innerText = "Waiting!"
 playerScore.innerText = playScore
 computerScore.innerText = comScore
 announce.innerText = "Pick your move!"
 
 
 const playGame = (player, computer) => {
-  if(player === computer){
+  if (player === computer) {
     announce.innerText = "Tie!"
-  }else if((player === 'rock' && computer === 'scissors') ||
-  (player === 'scissors' && computer === 'paper') || 
-  (player === 'paper' && computer === 'rock')){
+  } else if ((player === 'rock' && computer === 'scissors') ||
+    (player === 'scissors' && computer === 'paper') ||
+    (player === 'paper' && computer === 'rock')) {
     playScore++
     playerScore.innerText = playScore
-    announce.innerText = "Player Won!"
-  }else{
+    announce.innerText = "Player won the round!"
+  } else {
     comScore++
     computerScore.innerText = comScore
-    announce.innerText = 'Computer Won!'
+    announce.innerText = 'Computer won the round!'
   }
 }
 
 
 const playRound = () => {
-  if(playScore < 5 && comScore < 5){
+  if (playScore < 5 && comScore < 5) {
     const player = playerChoice.innerText
     const computer = getComputerChoice()
 
-    
     playGame(player, computer)
     computerChoice.innerText = computer
 
-    if(playScore === 5){
-      announce.innerText = "Player wins the game!!!!" 
+    if (playScore === 5) {
+      announce.innerText = "Player wins the game!!!!"
       disableButtons(true)
-    }else if (comScore === 5){
+    } else if (comScore === 5) {
       announce.innerText = "Computer wins the game!!!!"
       disableButtons(true)
     }
