@@ -177,6 +177,12 @@ const buttons = document.querySelectorAll('button')
 const playerChoice = document.getElementById('playerChoice');
 const computerChoice = document.getElementById('computerChoice');
 
+const disableButtons = (disable) => {
+  buttons.forEach(button => {
+    button.disabled = disable;
+  });
+}
+
 
 // Random generated choices from computer
 const getComputerChoice = () => {
@@ -191,7 +197,6 @@ const getComputerChoice = () => {
 }
 
 // computerChoice.innerText = getComputerChoice()
-computerChoice.innerText = getComputerChoice()
 playerScore.innerText = playScore
 computerScore.innerText = comScore
 announce.innerText = "Pick your move!"
@@ -215,18 +220,28 @@ const playGame = (player, computer) => {
 
 
 const playRound = () => {
-
+  if(playScore < 5 && comScore < 5){
     const player = playerChoice.innerText
-    const computer = computerChoice.innerText
-  
+    const computer = getComputerChoice()
+
+    
     playGame(player, computer)
+    computerChoice.innerText = computer
+
+    if(playScore === 5){
+      announce.innerText = "Player wins the game!!!!" 
+      disableButtons(true)
+    }else if (comScore === 5){
+      announce.innerText = "Computer wins the game!!!!"
+      disableButtons(true)
+    }
+  }
 }
 
 
 buttons.forEach(button => {
   button.addEventListener('click', () => {
     playerChoice.innerText = button.id
-
     playRound()
   })
 })
