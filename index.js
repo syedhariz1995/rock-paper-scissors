@@ -167,16 +167,66 @@
 
 // Scores 
 let playScore = 0
-let computerScore = 0
+let comScore = 0
 
 // Global variables
 const playerScore = document.getElementById('playerScore')
-const comScore = document.getElementById('computerScore')
+const computerScore = document.getElementById('computerScore')
 const announce = document.getElementById('announce')
-
-const rock = document.getElementById('rock')
-const paper = document.getElementById('paper')
-const scissors = document.getElementById('scissors')
+const buttons = document.querySelectorAll('button')
 const playerChoice = document.getElementById('playerChoice');
+const computerChoice = document.getElementById('computerChoice');
 
 
+// Random generated choices from computer
+const getComputerChoice = () => {
+  let choice = Math.random()
+   if(choice <= 0.33){
+    return rock.id
+   } else if (choice >= 0.34 && choice <= 0.66){
+    return paper.id
+   } else{
+    return scissors.id
+   }
+}
+
+// computerChoice.innerText = getComputerChoice()
+computerChoice.innerText = getComputerChoice()
+playerScore.innerText = playScore
+computerScore.innerText = comScore
+announce.innerText = "Pick your move!"
+
+
+const playGame = (player, computer) => {
+  if(player === computer){
+    announce.innerText = "Tie!"
+  }else if((player === 'rock' && computer === 'scissors') ||
+  (player === 'scissors' && computer === 'paper') || 
+  (player === 'paper' && computer === 'rock')){
+    playScore++
+    playerScore.innerText = playScore
+    announce.innerText = "Player Won!"
+  }else{
+    comScore++
+    computerScore.innerText = comScore
+    announce.innerText = 'Computer Won!'
+  }
+}
+
+
+const playRound = () => {
+
+    const player = playerChoice.innerText
+    const computer = computerChoice.innerText
+  
+    playGame(player, computer)
+}
+
+
+buttons.forEach(button => {
+  button.addEventListener('click', () => {
+    playerChoice.innerText = button.id
+
+    playRound()
+  })
+})
