@@ -176,6 +176,7 @@ const announce = document.getElementById('announce')
 const buttons = document.querySelectorAll('button')
 const playerChoice = document.getElementById('playerChoice');
 const computerChoice = document.getElementById('computerChoice');
+const reset = document.getElementById('reset')
 
 const disableButtons = (disable) => {
   buttons.forEach(button => {
@@ -202,7 +203,7 @@ playerScore.innerText = playScore
 computerScore.innerText = comScore
 announce.innerText = "Pick your move!"
 
-
+// Logic of the game on who wins the round
 const playGame = (player, computer) => {
   if (player === computer) {
     announce.innerText = "Tie!"
@@ -219,7 +220,7 @@ const playGame = (player, computer) => {
   }
 }
 
-
+// Play until one of them reach score of 5
 const playRound = () => {
   if (playScore < 5 && comScore < 5) {
     const player = playerChoice.innerText
@@ -237,6 +238,19 @@ const playRound = () => {
     }
   }
 }
+
+// const resetGame = () => {
+//   playScore = 0
+//   comScore = 0
+//   playScore.innerText = playScore
+//   computerScore.innerText = comScore
+//   announce.innerText = "Pick your move!"
+//   playerChoice.innerText = ""
+//   computerChoice.innerText = ""
+//   disableButtons(false)
+// }
+
+// reset.addEventListener('click', resetGame)
 
 
 buttons.forEach(button => {
