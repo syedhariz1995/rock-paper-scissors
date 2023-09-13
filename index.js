@@ -242,18 +242,18 @@ const playRound = () => {
     playGame(player, computer)
     computerChoice.innerText = computer
 
-    if (playScore === 5) {
-      announce.innerText = "Player wins the game!!!!"
-      disableButtons(true)
-    } else if (comScore === 5) {
-      announce.innerText = "Computer wins the game!!!!"
-      disableButtons(true)
-    }
+  }
+  if (playScore === 5) {
+    announce.innerText = "Player wins the game!!!!"
+    disableButtons(true)
+  } else if (comScore === 5) {
+    announce.innerText = "Computer wins the game!!!!"
+    disableButtons(true)
   }
 }
 
 buttons.forEach(button => {
-  if(button !== reset){
+  if (button !== reset) {
     button.addEventListener('click', () => {
       playerChoice.innerText = button.id
       playRound()
