@@ -23,3 +23,8 @@
 .comBtn{
     cursor: not-allowed;
 }
+
+#reset:hover{
+    cursor: pointer;
+    color:orange;
+}

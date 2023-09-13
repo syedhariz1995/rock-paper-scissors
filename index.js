@@ -184,6 +184,19 @@ const disableButtons = (disable) => {
   });
 }
 
+const resetGame = () => {
+  playScore = 0;
+  comScore = 0;
+  playerScore.innerText = playScore;
+  computerScore.innerText = comScore;
+  announce.innerText = "Pick your move!";
+  playerChoice.innerText = "";
+  computerChoice.innerText = "Waiting!";
+  disableButtons(false)
+};
+
+// Event listener for the "reset" button
+reset.addEventListener('click', resetGame);
 
 // Random generated choices from computer
 const getComputerChoice = () => {
@@ -239,23 +252,17 @@ const playRound = () => {
   }
 }
 
-// const resetGame = () => {
-//   playScore = 0
-//   comScore = 0
-//   playScore.innerText = playScore
-//   computerScore.innerText = comScore
-//   announce.innerText = "Pick your move!"
-//   playerChoice.innerText = ""
-//   computerChoice.innerText = ""
-//   disableButtons(false)
-// }
 
-// reset.addEventListener('click', resetGame)
 
 
 buttons.forEach(button => {
-  button.addEventListener('click', () => {
-    playerChoice.innerText = button.id
-    playRound()
-  })
+  if(button !== reset){
+    button.addEventListener('click', () => {
+      playerChoice.innerText = button.id
+      playRound()
+    })
+  }
 })
+
+
+
