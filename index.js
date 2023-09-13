@@ -252,9 +252,6 @@ const playRound = () => {
   }
 }
 
-
-
-
 buttons.forEach(button => {
   if(button !== reset){
     button.addEventListener('click', () => {
@@ -263,6 +260,3 @@ buttons.forEach(button => {
     })
   }
 })
-
-
-
